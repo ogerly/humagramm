@@ -1,5 +1,5 @@
 <?PHP 
-
+/*
     define('HOST',"localhost");
 	define('USER',"root");
 	define('PASSWORD',"x");
@@ -11,9 +11,9 @@
     define('SUCCESS','OK');
     define('ERROR','ERROR');
  
- 
+ */
 
-
+require_once('setup/setup.php');
 
         
     /*
