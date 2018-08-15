@@ -1,13 +1,9 @@
 <?PHP 
-    define('HOST',"localhost");
-	define('USER',"senderfm_web_usr");
-	define('PASSWORD',"Cb4njpPfcNLb#aS8o3BZN");
-	define('DB',"senderfm_web_db");
 
-    //define('HOST',"localhost");
-	//define('USER',"root");
-	//define('PASSWORD',"x");
-	//define('DB',"humagramm");
+    define('HOST',"localhost");
+	define('USER',"root");
+	define('PASSWORD',"x");
+	define('DB',"humagramm");
 
     define('DTR',"#|#"); // Datensatztrenner  
     define('FTR',"#$#"); // Feldtrenner  
