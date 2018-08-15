@@ -1,6 +1,6 @@
 # Humagramm
 
-## Verbinde Menschen mit Projekten oder Oragnisation. 
+## Verbinde Menschen mit Projekten und / oder Oragnisation. 
 
 Datenbank mit Frontendausgabe. 
 3 Formulare um:
@@ -8,7 +8,9 @@ Datenbank mit Frontendausgabe.
 - Organisationen eintragen
 - Projekte eintragen
 
-Alle drei Punkte können miteinander Verknüpft werden
+Alle drei Punkte können miteinander Verknüpft werden jeweils auch getrennt von einander... 
+
+Ziel: einen Überblick über eine Homogene Gruppe schaffen in welchen Organisationen ein Mensch ist und an welchen projekten ein Mensch und oder eine Organisation beteiligt ist .. 
 
 
 Install: 
