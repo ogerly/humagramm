@@ -19,7 +19,7 @@ Install:
 2. lege die Datenbank an oder Importiere. ( findest du unter  humagramm/SQL/humagramm.sql )
 3. änder die locoalen Zugangsdaten zu deiner Datenbank in  humagramm/setup/setup.php 
 
-dann sollte der spass laufen 
+dann sollte der Spass laufen :) 
 
 # z.z. ist der zugang nicht über die Datenbank sondern fest in der humagramm/login.php definiert.
 
