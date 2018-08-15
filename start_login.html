@@ -1,0 +1,261 @@
+<div id="login_box" class="  col-md-12 header">
+            
+    <div id="tab_newHuman" class="btn btn-warning" data-toggle='modal' data-target='#myModal_form' onclick="loadMordalform_formdata('human','news')">+Menschen</div>
+    <div id="tab_newOrga" class="btn btn-warning" data-toggle='modal' data-target='#myModal_form' onclick="loadMordalform_formdata('orga','news')">+Orga</div>
+    <div id="tab_newProg" class="btn btn-warning" data-toggle='modal' data-target='#myModal_form' onclick="loadMordalform_formdata('proj','news')">+Projekte</div>
+    <a href="logout.php" >Logout</a>
+</div>    
+        
+<div id="content_form" class="col-md-12">
+            
+    <div class="tabs-container">
+        <div class="tabs-right">
+            <ul id="tab-box"  class="nav nav-tabs">
+                <li  class="active"><a id="tab_overview"  data-toggle="tab" href="#tab-0"> Übersicht</a></li>
+                                   
+            </ul>
+            <div id="tab_contBOX" class="tab-content ">
+                                
+                <div id="tab-0" class="tab-pane active">
+                    <div class="panel-body">
+                        <br>
+                        <div class="tabs-container">
+
+                            <div class="tabs-left">
+                                <ul class="nav nav-tabs">
+                                    <li  class="active"><a id="tab_ov_human" class="tab_ov active" data-toggle="tab" href="#tab-6">Menschen</a></li>
+                                    <li  class=""><a id="tab_ov_orga" class="tab_ov" data-toggle="tab" href="#tab-7">Organistation</a></li>
+                                    <li  class=""><a id="tab_ov_proj" class="tab_ov" data-toggle="tab" href="#tab-8">Projekte</a></li>
+                                    
+
+                                </ul>
+                                <div  class="tab-content ">
+                                    <div id="tab-6" class="tab-pane active">
+                                        <div class="panel-body">
+
+
+
+                                            <div id="tablbox_human">
+                                                <table id="" class="table table-striped table-bordered table-hover dataTables-example-human " >
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Bild</th>
+                                                            <th>Name</th>
+                                                            <th>Info</th>
+                                                            <th>Plz + Ort</th>
+                                                            <th>Social Network</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="content_list_menschen">
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="tab-7" class="tab-pane">
+                                        <div class="panel-body">
+                                            
+
+                                            <div id="tablbox_orga">
+                                                <table class="table table-striped table-bordered table-hover dataTables-example-orga" >
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Bild</th>
+                                                            <th>Name</th>
+                                                            <th>Info</th>
+                                                            <th>Plz + Ort</th>
+                                                            <th>Social Network</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="content_list_orgas">
+
+
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="tab-8" class="tab-pane">
+                                        <div class="panel-body">
+
+                                            <div id="tablbox_proj">
+
+                                                <table class="table table-striped table-bordered table-hover dataTables-example-proj" >
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Bild</th>
+                                                            <th>Name</th>
+                                                            <th>Info</th>
+                                                            <th>Plz + Ort</th>
+                                                            <th>Social Network</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="content_list_projects">
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="tab-1" class="tab-pane ">
+                                        <div class="panel-body">
+
+
+                                            <form id="new_human">
+                                                <h2>neue Menschen eintragen</h2>
+                                                <br> <br>
+                                                <input type="text" class="form-control" placeholder="Titel" name="titel">
+                                                <input type="text" class="form-control" placeholder="Geschlecht" name="sex"> <br>
+                                                <input type="text" class="form-control" placeholder="Vorname" name="vorname">
+                                                <input type="text" class="form-control" placeholder="Nachname" name="nachname"> <br>
+                                                <input type="text" class="form-control" placeholder="PLZ" name="plz">
+                                                <input type="text" class="form-control" placeholder="Ort" name="ort">
+                                                <input type="text" class="form-control" placeholder="Adresse" name="strasse">
+                                                <input type="text" class="form-control" placeholder="Adresse2" name="adress1">
+                                                <input type="text" class="form-control" placeholder="bundesland"  name="">
+                                                <input type="text" class="form-control" placeholder="land"  name=""> <br>
+                                                <input type="text" class="form-control" placeholder="e-mail1" name="email1">
+                                                <input type="text" class="form-control" placeholder="e-mail2" name="email2">
+                                                <input type="text" class="form-control" placeholder="tel1" name="tel1">
+                                                <input type="text" class="form-control" placeholder="tel2" name="tel2"> <br>
+                                                <input type="text" class="form-control" placeholder="www1" name="www1">
+                                                <input type="text" class="form-control" placeholder="www2" name="www2">
+                                                <input type="text" class="form-control" placeholder="Facebook" name="facebook">
+                                                <input type="text" class="form-control" placeholder="Youtube" name="youtube">
+                                                <input type="text" class="form-control" placeholder="Twitter" name="twitter">
+                                                <input type="text" class="form-control" placeholder="Google+" name="google">
+                                                <br>
+                                                <textarea class="form-control "  placeholder="Text" name="zusatz"></textarea>
+                                                <br>
+
+                                                <div id="imgbox_human" class="ibox-content">
+
+
+                                                </div>
+
+
+                                                <br>
+
+                                                <div id="save_new_human" class="btn btn-primary">Speichern</div>
+                                                <br>
+                                                <br>
+
+                                            </form>
+
+
+                                        </div>
+                                    </div>
+                                    <div id="tab-2" class="tab-pane">
+                                        <div class="panel-body">
+
+
+                                            <h2>neue Organistation</h2>
+                                            <small>Vereine, Partein, Zusammenschlüsse</small>
+                                            <br> <br>
+                                            <form id="new_orga">
+                                                <input type="text" class="form-control" placeholder="Name" name="name">
+                                                <input type="text" class="form-control" placeholder="Typ"  name="orgatyp">
+                                                <small>Partei, Verein, Organisation, Gruppe, Bewegung</small> <br>
+                                                <input type="text" class="form-control" placeholder="PLZ"  name="plz">
+                                                <input type="text" class="form-control" placeholder="Ort"  name="ort">
+                                                <input type="text" class="form-control" placeholder="str_nr"  name="str_nr">
+                                                <input type="text" class="form-control" placeholder="Adresse2"  name="adresse2">
+                                                <input type="text" class="form-control" placeholder="bundesland"  name="bundesland">
+                                                <input type="text" class="form-control" placeholder="land"  name="land"> <br>
+                                                <input type="text" class="form-control" placeholder="e-mail1"  name="e-mail1">
+                                                <input type="text" class="form-control" placeholder="e-mail2"  name="e-mail2">
+                                                <input type="text" class="form-control" placeholder="tel1" name="tel1">
+                                                <input type="text" class="form-control" placeholder="tel2"  name="tel2"> <br>
+                                                <input type="text" class="form-control" placeholder="Ansprechpartner"  name="ansprech"> <br>
+                                                <input type="text" class="form-control" placeholder="www1" name="www1">
+                                                <input type="text" class="form-control" placeholder="www2" name="www2">
+                                                <input type="text" class="form-control" placeholder="Facebook" name="facebook">
+                                                <input type="text" class="form-control" placeholder="Youtube" name="youtube">
+                                                <input type="text" class="form-control" placeholder="Twitter" name="twitter">
+                                                <input type="text" class="form-control" placeholder="Google+" name="google">
+
+
+                                                <br>
+                                                <textarea class="form-control "  name="zusatz" placeholder="Text"></textarea>
+                                                <br>
+
+
+                                                <div id="duallistbox_orga" class="ibox-content"> </div>
+                                                <br>
+                                                <br>
+
+
+                                                <div id="imgbox_orga"  class="ibox-content "> </div>
+
+
+                                                <div id="save_new_orga" class="btn btn-primary">Speichern</div>
+                                                <br>
+                                                <br>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                    <div id="tab-3" class="tab-pane">
+                                        <div class="panel-body">
+
+
+                                            <h2>neue Projekte</h2>
+                                            <small>Veranstaltunge, Events, Medienkanäle, Blogs, sonstiges</small>
+                                            <br> <br>
+                                            <form id="new_proj">
+                                                <input type="text" class="form-control" placeholder="Name"  name="name">
+                                                <input type="text" class="form-control" placeholder="Beschreibung"  name="desc"> <br>
+                                                <input type="text" class="form-control" placeholder="PLZ"  name="plz">
+                                                <input type="text" class="form-control" placeholder="Ort"  name="ort">
+                                                <input type="text" class="form-control" placeholder="str_nr"  name="str_nr">
+                                                <input type="text" class="form-control" placeholder="Adresse2"  name="adresse2">
+                                                <input type="text" class="form-control" placeholder="bundesland"  name="bundesland">
+                                                <input type="text" class="form-control" placeholder="land"  name="land"> <br>
+                                                <input type="text" class="form-control" placeholder="Ansprechpartner"  name="ansprech">   <br>                                         
+                                                <input type="text" class="form-control" placeholder="e-mail1"  name="email1">
+                                                <input type="text" class="form-control" placeholder="e-mail2"  name="email2">
+                                                <input type="text" class="form-control" placeholder="tel1"  name="tel1">
+                                                <input type="text" class="form-control" placeholder="tel2"  name="tel2"> <br>
+                                                <input type="text" class="form-control" placeholder="www1" name="www1">
+                                                <input type="text" class="form-control" placeholder="www2" name="www2">
+                                                <input type="text" class="form-control" placeholder="Facebook" name="facebook">
+                                                <input type="text" class="form-control" placeholder="Youtube" name="youtube">
+                                                <input type="text" class="form-control" placeholder="Twitter" name="twitter">
+                                                <input type="text" class="form-control" placeholder="Google+" name="google">
+
+                                                <br>
+
+
+                                                <textarea class="form-control "  placeholder="Text"   name="zusatz"></textarea>
+                                                <br>   
+
+
+                                                <div id="duallistbox_proj" class="ibox-content"> </div>
+                                                <br>
+
+
+                                                <div id="imgbox_proj" class="ibox-content"> </div>
+                                                <br>
+
+                                                <div id="save_new_proj" class="btn btn-primary">Speichern</div>
+                                                <br>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>                             
+                            </div>                            
+                        </div>             
+                    </div>
+                </div>      
+            </div>
+        </div>
+    </div>  
+</div>
+       
+ 
