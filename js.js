@@ -590,6 +590,7 @@ function loadMordalform_img(typ, id){
 
 function loadMordalform_formdata(typ, id){
     console.log("loadMordalform_formdata  typ => " + typ + " ; id => " +id);
+    
     if ( typ == "human") {
         $("#myModal_form .modal-body").html($("#tab-1").html(function(){
              $("#imgbox_human").load("imgbox.html" , function(){
@@ -601,6 +602,7 @@ function loadMordalform_formdata(typ, id){
             
         }));
     }
+    
      if ( typ == "orga") {
          
                 console.log( "typ => " + typ );
@@ -814,15 +816,7 @@ $(document).ready(function($) {
             
     // START MENSCHEN laden 
                  
-         
-
-                
-                
-
- 
-    
-    
-    
+          
     
             
     $(document).on("click", "#login_btn", function(){
@@ -1042,17 +1036,22 @@ $(document).ready(function($) {
                 console.log( data );
                 if (data != "ERROR") {
                     $("#new_human").trigger('reset');
+                    $(".modal-header > .close").click();
+                    $("#tab_ov_human").click();
                 }
             }
         });
                      
     });
-                
-                    
+    
+ 
+               
+    
+    
                 
     $(document).on("click","#save_new_orga", function(){
                    
-        var serial = $("#new_orga").serialize(),
+        var serial = $("form#new_orga").serialize(),
             $image = $(".image-crop > img");
                     
                     
@@ -1072,9 +1071,13 @@ $(document).ready(function($) {
         console.log("serial =>" + serial );
         console.log("humanTOorga =>" + humanTOorga );
         console.log("projTOorga =>" + projTOorga );
+        console.log("data =>" +  serial + "&typ=save_new_orga&img="+img+"&humanTOorga="+humanTOorga+"&projTOorga="+projTOorga  );
                     
                     
         var img = $image.cropper("getDataURL");
+        
+      
+        
         /* name=kjkljj&orgatyp=ljlj&plz=lj&ort=ljl&str_nr=jkl&adresse2=jkl&bundesland=jkl&land=jkl&e-mail1=jlk&e-mail2=jlk&tel1=jlk&tel2=jl&ansprech=jkjjkklj&menschen=Austria&menschen=Bahamas&menschen=Barbados&menschen=Belgium&menschen=Cameroon&projekte=Austria&projekte=Bahamas&projekte=Barbados&projekte=Bermuda&projekte=Bulgaria */
         $.ajax({
             url: "php.php",
@@ -1084,6 +1087,8 @@ $(document).ready(function($) {
                 console.log( data );
                  if (data != "ERROR") {
                     $("#new_orga").trigger('reset');
+                     // $(".modal-header > .close").click();
+                     // $("#tab_ov_orga").click();
                 }
             }
         });
@@ -1124,7 +1129,10 @@ $(document).ready(function($) {
             type: "POST",
             data:    serial + "&typ=save_new_proj&img="+img+"&humanTOproj="+humanTOproj+"&orgaTOproj="+orgaTOproj ,   
             success: function( data ) {
-                console.log( data );
+                console.log( data ); 
+                $("#new_proj").trigger('reset');
+                $(".modal-header > .close").click();
+                $("#tab_ov_proj").click();
             }
         });
                      
@@ -1193,6 +1201,10 @@ $(document).ready(function($) {
                                                 html +='<td>'+tdata[6]+' '+tdata[5]+'</td>';
                                                 html +='<td class="center"> ';
                                                 html +='<a href="'+tdata[20]+'" target="_blank"><label class="btn">Facebook</label></a>';
+                                                html +='</td>'; 
+                                                html +='<td>';
+                                                html +='<span  class="fa fa-edit pointer hover" title="Bearbeiten">   </span> &nbsp;  &nbsp;  &nbsp;  ';
+                                                html +='<span   class="fa fa-trash-alt pointer hover"  onclick="deleteHuman('+tdata[0]+')" title="löschen">  </span>';
                                                 html +='</td>';
                                                 html +='</tr>';
                                 
@@ -1303,6 +1315,10 @@ $(document).ready(function($) {
                                           html +='      <div>'+tdata[3]+' '+tdata[4]+'</div>';
                                           html +='       </td>';
                                           html +='  <td>'+tdata[14]+'</td>';
+                                            html +='<td>';
+                                                html +='<span  class="fa fa-edit pointer hover" title="Bearbeiten">   </span> &nbsp;  &nbsp;  &nbsp;  ';
+                                                html +='<span   class="fa fa-trash-alt pointer hover"  onclick="deleteOrga('+tdata[0]+')" title="löschen">  </span>';
+                                                html +='</td>';
                                           html +='</tr>';
                                 
                                           $("#content_list_orgas").append(html);
@@ -1373,6 +1389,10 @@ $(document).ready(function($) {
                                             html +='<td class="center"> ';
                                             html +='<a href="'+tdata[19]+'" target="_blank"><label class="btn">Facebook</label></a>';
                                             html +='</td>';
+                                            html +='<td>';
+                                                html +='<span  class="fa fa-edit pointer hover" title="Bearbeiten">   </span> &nbsp;  &nbsp;  &nbsp;  ';
+                                                html +='<span   class="fa fa-trash-alt pointer hover"  onclick="deleteProj('+tdata[0]+')" title="löschen">  </span>';
+                                                html +='</td>';
                                             html +='</tr>';
                                 
                                           $("#content_list_projects").append(html);
@@ -1412,8 +1432,145 @@ $(document).ready(function($) {
                
                 
                 
-           
- 
-                
+       
                 
             }); // document readey
+
+
+          
+        function deleteHuman(idi){
+           console.log("deleteHuman  id => " + idi  );  
+            
+            swal({
+              title: 'Wirklich löschen?',
+              text: "Du löschst den Menschen aus der Datenbank und alle Verknüpfungen dazu!",
+              type: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Ja, löschen!'
+            }).then((result) => {
+              if (result.value) {
+                  
+                         $.ajax({
+            url: "php.php",
+            type: "POST",
+            data:   {typ:"deleteHuman", id:idi},   
+            success: function(data) {
+                console.log( "deleteHuman =>" + data );
+                
+                if ( data != "ERROR"){
+                    $("#tab_ov_human").click();
+                      swal(
+                  'gelöscht!',
+                  'Der Mensch und alle Verknüpfungen sind aus der Datenbank gelöscht',
+                  'success'
+                )
+                    
+                }
+               
+            }
+        });
+                  
+                  
+              
+              }
+            })
+            
+            
+         
+               
+           }
+
+
+      function deleteOrga(idi){
+           console.log("deleteOrga  id => " + idi  );  
+            
+            swal({
+              title: 'Wirklich löschen?',
+              text: "Du löschst eine Organisation aus der Datenbank und alle Verknüpfungen dazu!",
+              type: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Ja, löschen!'
+            }).then((result) => {
+              if (result.value) {
+                  
+                         $.ajax({
+            url: "php.php",
+            type: "POST",
+            data:   {typ:"deleteOrga", id:idi},   
+            success: function(data) {
+                console.log( "deleteHOrga =>" + data );
+                
+                if ( data != "ERROR"){
+                    $("#tab_ov_orga").click();
+                      swal(
+                  'gelöscht!',
+                  'Die Organisation und alle Verknüpfungen sind aus der Datenbank gelöscht',
+                  'success'
+                )
+                    
+                }
+               
+            }
+        });
+                  
+                  
+              
+              }
+            })
+            
+            
+         
+               
+           }
+
+
+
+
+
+      function deleteProj(idi){
+           console.log("deleteProj  id => " + idi  );  
+            
+            swal({
+              title: 'Wirklich löschen?',
+              text: "Du löschst ein Projekt aus der Datenbank und alle Verknüpfungen dazu!",
+              type: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Ja, löschen!'
+            }).then((result) => {
+              if (result.value) {
+                  
+                         $.ajax({
+            url: "php.php",
+            type: "POST",
+            data:   {typ:"deleteProj", id:idi},   
+            success: function(data) {
+                console.log( "deleteProj =>" + data );
+                
+                if ( data != "ERROR"){
+                    $("#tab_ov_proj").click();
+                      swal(
+                  'gelöscht!',
+                  'Das Projekt und alle Verknüpfungen sind aus der Datenbank gelöscht',
+                  'success'
+                )
+                    
+                }
+               
+            }
+        });
+                  
+                  
+              
+              }
+            })
+            
+            
+         
+               
+           }

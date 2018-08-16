@@ -174,6 +174,14 @@ switch($_POST["typ"]) {
         
         
         
+    case "deleteHuman":  
+           $sql = 'DELETE FROM `zz_menschen` WHERE `zz_menschen`.`id` = '. $_POST["id"] ;
+        echo sql_db($sql, "DELETE"); 
+        
+        break;
+        
+        
+        
     case "load_menschen":
          // lädt 100 Menschen
         $sql = 'SELECT * FROM `zz_menschen` ORDER BY dates DESC LIMIT 100 ';
@@ -207,6 +215,9 @@ switch($_POST["typ"]) {
          echo sql_db($sql, "SELECT"); 
         break;   
         
+        
+        
+        
       case "load_only_orga":
          // lädt 100 Menschen
           $sql = 'SELECT * FROM `zz_orgas` WHERE `id`=  '. $_POST["id"] .'';
@@ -222,7 +233,7 @@ switch($_POST["typ"]) {
         
     case "save_new_orga":
         
-         print_r($_POST);
+        // print_r($_POST);
         
         
          // speichert einen neuen Menschen
@@ -264,29 +275,34 @@ switch($_POST["typ"]) {
         
         
         $sql=' INSERT INTO `zz_orgas`(`id`, `name`, `orgatyp`, `plz`, `ort`, `str_nr`, `adresse2`, `bundesland`, `land`, `email1`, `email2`, `tel1`, `tel2`, `ansprech`, `zusatz`, `img`) VALUES';
-        $sql.='( NULL ,"'. $_POST["name"] .'","'. $_POST["orgatyp"] .'","'. $_POST["plz"] .'","'. $_POST["ort"] .'","'. $_POST["str_nr"] .'","'. $_POST["adresse2"] .'","'. $_POST["bundesland"] .'","'. $_POST["land"] .'","'. $_POST["email1"] .'","'. $_POST["email2"] .'","'. $_POST["tel1"] .'","'. $_POST["tel2"] .'","'. $_POST["ansprech"] .'","'. $_POST["zusatz"] .'","'. $string .'")';
+       echo $sql.='( NULL ,"'. $_POST["name"] .'","'. $_POST["orgatyp"] .'","'. $_POST["plz"] .'","'. $_POST["ort"] .'","'. $_POST["str_nr"] .'","'. $_POST["adresse2"] .'","'. $_POST["bundesland"] .'","'. $_POST["land"] .'","'. $_POST["email1"] .'","'. $_POST["email2"] .'","'. $_POST["tel1"] .'","'. $_POST["tel2"] .'","'. $_POST["ansprech"] .'","'. $_POST["zusatz"] .'","'. $string .'")';
         
-        $orgaid =  sql_db($sql, "INSERT");
+       echo $orgaid =  sql_db($sql, "INSERT");
 
         
         // human to orga speichern
         // INSERT INTO `human_IN_orga`(`orgaID`, `humanID`) VALUES ([value-1],[value-2])
-         $arr =  explode(" ,",$_POST["humanTOorga"]); 
+        if ($_POST["humanTOorga"] != "") {
+           $arr =  explode(" ,",$_POST["humanTOorga"]); 
          $l =  COUNT($arr);
         $i = 0;
         for ($i;$i<$l;$i++){
            echo $sql='INSERT INTO `zz_human_IN_orga`(`orgaID`, `humanID`) VALUES ('.$orgaid.','.$arr[$i].')';
              echo sql_db($sql, "INSERT"); 
+        }   
         }
         
+        
         // projekte to orga speichern 
-        // INSERT INTO `orga_IN_proj`(`orgaID`, `projID`) VALUES ([value-1],[value-2])
+        // INSERT INTO `orga_IN_proj`(`orgaID`, `projID`) VALUES ([value-1],[value-2]) 
+        if ($_POST["projTOorga"] != "") {
          $arr1 =  explode(" ,",$_POST["projTOorga"]); 
          $ll =  COUNT($arr1);
         $y = 0;
         for ($y;$y<$ll;$y++){
            echo $sql1='INSERT INTO `zz_orga_IN_proj`(`orgaID`, `projID`) VALUES ('.$orgaid.','.$arr1[$y].')';
              echo sql_db($sql1, "INSERT"); 
+        }
         }
         break;
         
@@ -297,6 +313,15 @@ switch($_POST["typ"]) {
           $sql = 'SELECT * FROM `zz_orgas` ORDER BY dates DESC LIMIT 100';
         echo sql_db($sql, "SELECT"); 
         break;
+        
+        
+           case "deleteOrga":  
+           $sql = 'DELETE FROM `zz_orgas` WHERE `zz_orgas`.`id` = '. $_POST["id"] ;
+        echo sql_db($sql, "DELETE"); 
+        
+        break;
+        
+        
         
         
     case"save_new_proj":
@@ -384,7 +409,11 @@ switch($_POST["typ"]) {
         break;
         
         
+           case "deleteProj":  
+           $sql = 'DELETE FROM `zz_projects` WHERE `zz_projects`.`id` = '. $_POST["id"] ;
+        echo sql_db($sql, "DELETE"); 
         
+        break;
         
         
         

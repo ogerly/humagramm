@@ -32,13 +32,13 @@ $LOGIN = false;
         <!-- bootstrap-css -->
         <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
         <!-- bootstrap-css -->
-        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
         
        
         <link href="plugins/dataTables/datatables.min.css" rel="stylesheet">
          <link href="plugins/dualListbox/bootstrap-duallistbox.min.css" rel="stylesheet">
         <link href="plugins/cropper/cropper.min.css" rel="stylesheet">
-
+        <link href="plugins/fa/css/all.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="plugins/sweetalert2/sweetalert2.css" rel="stylesheet" type="text/css" media="all" />
 
           
         <style>
@@ -169,6 +169,8 @@ $LOGIN = false;
          <!-- Image cropper -->
         <script src="plugins/cropper/cropper.min.js"></script>
         <script src="js.js"></script>
+        <script src="plugins/fa/js/fontawesome.js"></script>
+        <script src="plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
              
         <script>
